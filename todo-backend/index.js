@@ -1,0 +1,42 @@
+const express = require('express');
+const cors = require('cors');
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const PORT = 5000;
+
+// Fake database
+let users = [{ username: 'admin', password: 'admin' }];
+let todos = [{ id: 1, text: 'Sample Task' }];
+
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  const user = users.find(u => u.username === username && u.password === password);
+  user ? res.json({ token: 'fake-token' }) : res.status(401).json({ message: 'Invalid' });
+});
+
+app.get('/items', (req, res) => res.json(todos));
+
+app.post('/items', (req, res) => {
+  const todo = { id: Date.now(), text: req.body.text };
+  todos.push(todo);
+  res.status(201).json(todo);
+});
+
+app.put('/items/:id', (req, res) => {
+  const index = todos.findIndex(t => t.id == req.params.id);
+  if (index === -1) return res.status(404).json({ message: 'Not found' });
+  todos[index].text = req.body.text;
+  res.json(todos[index]);
+});
+
+app.delete('/items/:id', (req, res) => {
+  todos = todos.filter(t => t.id != req.params.id);
+  res.status(204).end();
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+module.exports = app; // For testing
+
