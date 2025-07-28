@@ -1,138 +1,128 @@
-# 🧪 Todo-app-testing-suite
+# Todo App Testing Suite
 
-A full-stack Todo application built with **React (frontend)** and **Node.js + Express (backend)** that showcases robust **automated testing** practices using **Cypress** (UI) and **Supertest + Jest** (API).
-
----
-
-## 📦 Tech Stack
-
-| Layer     | Technology         |
-|-----------|--------------------|
-| Frontend  | React, Axios, Cypress |
-| Backend   | Node.js, Express, Jest, Supertest |
-| CI/CD     | GitHub Actions     |
+A full-stack Todo application built with React (frontend) and Node.js + Express (backend), focused on implementing automated testing using Cypress and Newman. CI automation is currently being integrated using GitHub Actions to streamline testing on push and pull requests on the UAT branch.
 
 ---
 
-## 🚀 Features
+## 📁 Project Structure
 
-- ✅ User login with mocked authentication
-- ✅ CRUD operations on Todos
-- ✅ Functional UI testing (Cypress)
-- ✅ REST API test automation (Supertest + Jest)
-- ✅ CI/CD integration with GitHub Actions
-- ✅ Test plan and documentation included
+Todo-app-testing-suite/
+├── cypress.config.js
+├── package.json
+├── package-lock.json
+├── README.md
+├── TEST_PLAN.md
 
----
-
-## 🗂️ Project Structure
-
-todo-app-testing-suite/
-├── todo-backend/ # Node.js API
-│ ├── index.js
-│ ├── routes/
-│ ├── controllers/
-│ ├── tests/ # API tests (Supertest + Jest)
-│ └── package.json
-├── todo-frontend/ # React App
+├── todo-frontend/
+│ ├── cypress/ # Cypress UI tests
+│ ├── cypress.config.js # Cypress config
+│ ├── public/
 │ ├── src/
-│ ├── cypress/ # Cypress tests
-│ └── package.json
-├── .github/
-│ └── workflows/
-│ └── ci.yml # GitHub Actions CI pipeline
-├── TEST_PLAN.md # Test strategy document
-└── README.md # This file
+│ │ ├── App.css
+│ │ ├── App.js
+│ │ ├── App.test.js
+│ │ ├── components/ # Reusable UI components
+│ │ ├── index.css
+│ │ ├── index.js
+│ │ ├── logo.svg
+│ │ ├── reportWebVitals.js
+│ │ └── setupTests.js
+│ ├── package.json
+│ └── package-lock.json
 
-yaml
-Copy
-Edit
+├── todo-backend/
+│ ├── app/ # Business logic / controllers
+│ ├── app.js # Express app
+│ ├── index.js # App entry point
+│ ├── test/ # Postman collection
+│ │ └── todo-api.postman_collection.json
+│ ├── package.json
+│ └── package-lock.json
+
 
 ---
 
-## ⚙️ Setup Instructions (⏱️ ~2 minutes)
+## ✅ Testing Overview
+
+### Frontend (React)
+- Tested with **Cypress**
+- UI flows like login and todo management are verified
+
+### Backend (Node.js)
+- Tested using **Newman**
+- Uses a Postman collection to validate API endpoints
+
+---
+
+## ⚙️ Getting Started
 
 ### 1. Clone the Repository
-
 ```bash
 git clone https://github.com/yourusername/todo-app-testing-suite.git
 cd todo-app-testing-suite
-2. Start the Backend (Node.js API)
-bash
-Copy
-Edit
+2. Start the Backend
+
 cd todo-backend
 npm install
 npm start
-Backend runs at: http://localhost:5000
+# Runs at http://localhost:5000
+3. Start the Frontend
 
-3. Start the Frontend (React App)
-bash
-Copy
-Edit
 cd ../todo-frontend
 npm install
 npm start
-Frontend runs at: http://localhost:3000
+# Runs at http://localhost:3000
+🧪 Running Tests
+API Tests (Newman)
 
-✅ Running Tests
-🧪 API Tests (Supertest + Jest)
-bash
-Copy
-Edit
 cd todo-backend
-npm test
-🌐 UI Tests (Cypress)
-bash
-Copy
-Edit
+newman run test/todo-api.postman_collection.json
+UI Tests (Cypress)
+
+
 cd todo-frontend
-npx cypress open    # Interactive GUI
+npx cypress open       # GUI mode
 # or
-npx cypress run     # Headless mode
-🔁 CI/CD Pipeline (GitHub Actions)
-This project includes a preconfigured GitHub Actions workflow:
+npx cypress run        # Headless mode
+🔁 CI/CD with GitHub Actions (In Progress)
+A CI pipeline is being configured to:
 
-Automatically installs dependencies
+Run automatically on each push or pull request
 
-Runs backend API tests
+Execute both frontend (Cypress) and backend (Newman) test suites
 
-Builds frontend
+Only allow merging into main after tests pass and reviewers approve
 
-Runs Cypress UI tests
+Workflow configuration will live in:
 
-File: .github/workflows/ci.yml
-
-CI runs on every push or pull request to the main branch.
-
+.github/workflows/ci.yml
 📄 Documentation
 See TEST_PLAN.md for:
 
-What is being tested
+Full testing strategy
 
-Test coverage details
+Tools used
 
-Tools chosen and reasons
+Instructions to run tests
 
-How to run the tests
-
-Assumptions and limitations
+Known limitations
 
 🧠 Assumptions
-No real database: Data is in-memory (mocked for demo purposes)
+No real database (mock or in-memory data only)
 
-Authentication is token-based and hardcoded for simplicity
+Token-based authentication is simulated
 
-Focus is on test design and automation integration, not feature richness
+Application is for demonstrating testing workflows
 
-📌 Future Improvements
-🔐 Use real authentication (JWT + DB)
+🔧 Future Plans
+Add code coverage (e.g., with NYC or Jest)
 
-🧪 Add code coverage reporting with nyc or jest --coverage
+Add Docker support
 
-📦 Containerize with Docker + Docker Compose
+Include visual snapshot testing with Cypress
 
-📷 Add visual regression tests with Cypress snapshots
+Finalize and deploy the full CI pipeline
 
 👨‍💻 Author
-Your Name – @komolafetemitope14
+Temitope Komolafe
+GitHub: @komolafetemitope14
