@@ -9,7 +9,7 @@ on:
 jobs:
   backend:
     name: Backend Test
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, uat-runner]
     defaults:
       run:
         working-directory: ./backend
@@ -30,7 +30,7 @@ jobs:
 
   frontend:
     name: Frontend Test
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, uat-runner]
     defaults:
       run:
         working-directory: ./frontend
