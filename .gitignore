@@ -1,2 +1,8 @@
+# Ignore GitHub Actions runner binaries and temporary files
 actions-runner/
+_runner/
+*.tar.gz
+*.log
+*.pid
+*.svc
 
