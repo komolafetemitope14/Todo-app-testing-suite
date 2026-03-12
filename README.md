@@ -6,42 +6,43 @@ A full-stack Todo application built with React (frontend) and Node.js + Express 
 
 ## 📁 Project Structure
 
-Todo-app-testing-suite/
+## Project Structure
+
+```
+Todo-app-testing-suite
+│
 ├── cypress.config.js
 ├── package.json
 ├── package-lock.json
 ├── README.md
 ├── TEST_PLAN.md
-
-├── todo-frontend/
-│ ├── cypress/ # Cypress UI tests
-│ ├── cypress.config.js # Cypress config
-│ ├── public/
-│ ├── src/
-│ │ ├── App.css
-│ │ ├── App.js
-│ │ ├── App.test.js
-│ │ ├── components/ # Reusable UI components
-│ │ ├── index.css
-│ │ ├── index.js
-│ │ ├── logo.svg
-│ │ ├── reportWebVitals.js
-│ │ └── setupTests.js
-│ ├── package.json
-│ └── package-lock.json
-
-├── todo-backend/
-│ ├── app/ # Business logic / controllers
-│ ├── app.js # Express app
-│ ├── index.js # App entry point
-│ ├── test/ # Postman collection
-│ │ └── todo-api.postman_collection.json
-│ ├── package.json
-│ └── package-lock.json
-
-
----
-
+│
+├── todo-frontend
+│   ├── cypress/                 # Cypress UI tests
+│   ├── cypress.config.js        # Cypress configuration
+│   ├── public/
+│   ├── src/
+│   │   ├── App.css
+│   │   ├── App.js
+│   │   ├── App.test.js
+│   │   ├── components/          # Reusable UI components
+│   │   ├── index.css
+│   │   ├── index.js
+│   │   ├── logo.svg
+│   │   ├── reportWebVitals.js
+│   │   └── setupTests.js
+│   ├── package.json
+│   └── package-lock.json
+│
+└── todo-backend
+    ├── app/                     # Business logic / controllers
+    ├── app.js                   # Express app configuration
+    ├── index.js                 # Application entry point
+    ├── test/                    # Postman API tests
+    │   └── todo-api.postman_collection.json
+    ├── package.json
+    └── package-lock.json
+```
 ## ✅ Testing Overview
 
 ### Frontend (React)
